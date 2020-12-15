@@ -5,10 +5,7 @@
  */
 package school_management_system;
 
-/**
- *
- * @author Muhammad Taha Azam
- */
+
 public class Main_menu extends javax.swing.JFrame {
 
     /**
@@ -51,6 +48,11 @@ public class Main_menu extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(0, 153, 255));
         jButton2.setText("Student's Fee Submission");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 204, 204));
         jButton3.setText("Check the Student's Result(Report card)");
@@ -113,6 +115,14 @@ public class Main_menu extends javax.swing.JFrame {
         obj.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Studentfeesubmission obj=new Studentfeesubmission();
+        obj.setVisible(true);
+        dispose();
+                
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -7,10 +7,7 @@ package school_management_system;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Muhammad Taha Azam
- */
+
 public class StudentReportcard extends javax.swing.JFrame {
 
     /**
@@ -45,7 +42,7 @@ public class StudentReportcard extends javax.swing.JFrame {
 
         jLabel2.setText("Insert your Marks:");
 
-        jLabel3.setText("Chemistry Marks:");
+        jLabel3.setText("Chemstry Marks:");
 
         jLabel4.setText("Physics marks:");
 

@@ -7,10 +7,7 @@ package school_management_system;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Muhammad Taha Azam
- */
+
 public class Studentfeesubmission extends javax.swing.JFrame {
 
     /**
