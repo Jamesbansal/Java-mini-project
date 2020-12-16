@@ -5,7 +5,11 @@
  */
 package school_management_system;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 
 
 public class StudentReportcard extends javax.swing.JFrame {
@@ -33,6 +37,14 @@ public class StudentReportcard extends javax.swing.JFrame {
         pmark = new javax.swing.JTextField();
         cmark = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        sname = new javax.swing.JTextField();
+        label1 = new javax.swing.JLabel();
+        mmarks = new javax.swing.JTextField();
+        label2 = new javax.swing.JLabel();
+        label3 = new javax.swing.JLabel();
+        emarks = new javax.swing.JTextField();
+        comarks = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,16 +52,42 @@ public class StudentReportcard extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 51, 255));
         jLabel1.setText("Student's Report Card");
 
-        jLabel2.setText("Insert your Marks:");
+        jLabel2.setText("Student's Name:");
 
         jLabel3.setText("Chemstry Marks:");
 
         jLabel4.setText("Physics marks:");
 
+        pmark.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pmarkActionPerformed(evt);
+            }
+        });
+
+        cmark.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmarkActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        label1.setText("Math's Marks:");
+
+        label2.setText("English Marks:");
+
+        label3.setText("Computer Marks:");
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jButton2.setText("<<Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -60,49 +98,66 @@ public class StudentReportcard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(311, 311, 311)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(219, 219, 219)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addGap(57, 57, 57)
-                                    .addComponent(pmark, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel3)))))
-                .addContainerGap(358, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(346, 346, 346)
-                    .addComponent(cmark, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(519, Short.MAX_VALUE)))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(label1)
+                                    .addComponent(label2)
+                                    .addComponent(label3))
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(pmark)
+                                    .addComponent(sname)
+                                    .addComponent(cmark, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                                    .addComponent(mmarks)
+                                    .addComponent(emarks)
+                                    .addComponent(comarks)))
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(316, 316, 316)
+                        .addComponent(jButton2)
+                        .addGap(45, 45, 45)
+                        .addComponent(jButton1)))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addGap(63, 63, 63)
-                .addComponent(jLabel2)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel3)
-                .addGap(25, 25, 25)
+                .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(sname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(cmark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(pmark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(jButton1)
-                .addContainerGap(171, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(192, 192, 192)
-                    .addComponent(cmark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(257, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label1)
+                    .addComponent(mmarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label2)
+                    .addComponent(emarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label3)
+                    .addComponent(comarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,15 +165,54 @@ public class StudentReportcard extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String name=sname.getText();
         int chemistry =Integer.parseInt(cmark.getText());
         int physics =Integer.parseInt(pmark.getText());
+        int maths =Integer.parseInt(mmarks.getText());
+        int english =Integer.parseInt(emarks.getText());
+        int computer =Integer.parseInt(comarks.getText());
         
-        int totalmark=chemistry+physics;
-        int percentage=(totalmark/200)*100;
-        
-        JOptionPane.showMessageDialog(rootPane, "Student has secured: "+percentage+"%");
+        double totalmark=chemistry+physics+maths+english+computer;
+        double valu=(((totalmark)/500)*100);
+        int percentage=(int)valu;
+        try{
+      
+             Class.forName("com.mysql.cj.jdbc.Driver");
+             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/school?user=root&password=root");
+             Statement st = con.createStatement();
+             String query = "select count(*) from student where Name='"+name+"';";
+             ResultSet rs = st.executeQuery(query);
+             rs.next();
+             int count = rs.getInt(1);
+             if (count==0){
+                JOptionPane.showMessageDialog(rootPane, name+" doesn't exist in Database. Register First");
+             }else{
+
+             String query2 = "UPDATE `school`.`student` SET `Phy` = '"+ physics +"',`Chem` = '"+ chemistry +"',`Eng` = '"+ english +"',`Comp` = '"+ computer +"',`Maths` = '"+ maths +"',`Percentile` = '"+ percentage +"'  WHERE Name = '"+ name +"';";
+             int rowsinserted = st.executeUpdate(query2,Statement.RETURN_GENERATED_KEYS);
+             JOptionPane.showMessageDialog(rootPane, "Your Marks has been updated.");
+             }
+             con.close();
+         }catch (Exception ex) {
+            ex.printStackTrace();
+         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmarkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmarkActionPerformed
+
+    private void pmarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmarkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pmarkActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Main_menu obj=new Main_menu();
+        obj.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,11 +251,19 @@ public class StudentReportcard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cmark;
+    private javax.swing.JTextField comarks;
+    private javax.swing.JTextField emarks;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel label1;
+    private javax.swing.JLabel label2;
+    private javax.swing.JLabel label3;
+    private javax.swing.JTextField mmarks;
     private javax.swing.JTextField pmark;
+    private javax.swing.JTextField sname;
     // End of variables declaration//GEN-END:variables
 }
