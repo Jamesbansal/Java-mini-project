@@ -310,7 +310,13 @@ public class StudentDetails extends javax.swing.JFrame {
              if (p>35){
                  status="pass";
              }
-             
+             if (inso.equalsIgnoreCase("unpaid") || inst.equalsIgnoreCase("unpaid") || insth.equalsIgnoreCase("unpaid")){
+                 JOptionPane.showMessageDialog(rootPane, "Please Pay the School fees first to access your result");
+                 Main_menu obj=new Main_menu();
+                 obj.setVisible(true);
+                 dispose();
+             }
+             else{
 
              
              jTextField1.setText(name);
@@ -325,6 +331,7 @@ public class StudentDetails extends javax.swing.JFrame {
              jTextField10.setText(total);
              jTextField11.setText(perc);
              jTextField12.setText(status);
+             }
              }
              
             
