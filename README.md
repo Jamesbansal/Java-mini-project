@@ -1,5 +1,5 @@
-# Java-mini-project
-School Management System
+# School Management System
+
 
 ![mainmenu](mainmenu.png)
 ![display](display.png)
